@@ -11,6 +11,7 @@ class Sanitize{
     public static function check_request($method){
         $methods = ['GET' , 'POST'];
         if(!in_array($method , $methods)){
+            Sessions::flash('errors' , $method . "unsupported request");
 
         }
     }
