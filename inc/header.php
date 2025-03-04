@@ -192,6 +192,7 @@
                                 <ul>
                                     <li><a href="index.php?page=my-account">Account</a></li>
                                     <li><a href="index.php?page=checkout">Checkout</a></li>
+                                    <li><a href="indexAdmin.php?page=admin">dashboard</a></li>
                                 </ul>
                             </div>
                         </div>
