@@ -55,6 +55,9 @@ switch ($page) {
     case 'logic_contact':
         include "../controllers/auth/logic_contact.php";
         break;
+    case 'logic_register':
+        include "../controllers/auth/logic_register.php";
+        break;
     case 'admin':
         include "../admin.php";
         break;
