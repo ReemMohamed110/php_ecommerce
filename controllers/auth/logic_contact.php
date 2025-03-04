@@ -43,7 +43,8 @@ class LogicContact
                 exit; */
             }
         }
-        header("location:".$_SERVER['HTTP_REFERER']);
+       /*  header("location:view/auth/contact.php");
+        exit; */
     }
 }
 
