@@ -1,29 +1,34 @@
 <?php
-require_once 'Sessions.php';
-class Validate{
 
-    
-        public function validate($inputs, $rules)
-        {
-            
-    
-            foreach ($rules as $field => $conditions) {
-                foreach ($conditions as $key => $value) {
-                    if ($value === 'required') {
-                        $this->validate_require($field, $inputs[$field] ?? null);
-                    } elseif ($value === 'email') {
-                        $this->validate_email($field, $inputs[$field] ?? null);
-                    } elseif ($value === 'numeric') {
-                        $this->validate_numeric($field, $inputs[$field] ?? null);
-                    } elseif ($key === 'min') {
-                        $this->validate_min_length($field, $inputs[$field] ?? '', $value);
-                    } elseif ($key === 'max') {
-                        $this->validate_max_length($field, $inputs[$field] ?? '', $value);
-                    }
+require_once 'Sessions.php';
+class Validator
+{
+    private $errors = [];
+
+    public function validate($inputs, $rules)
+    {
+       
+
+        foreach ($rules as $field => $conditions) {
+            foreach ($conditions as $key => $value) {
+                if ($value === 'required') {
+                    Validator::validate_require($field, $inputs[$field] ?? null);
+                } elseif ($value === 'email') {
+                    Validator::validate_email($field, $inputs[$field] ?? null);
+                } elseif ($value === 'numeric') {
+                    Validator::validate_numeric($field, $inputs[$field] ?? null);
+                } elseif ($key === 'min') {
+                    Validator::validate_min_length($field, $inputs[$field] ?? '', $value);
+                } elseif ($key === 'max') {
+                    Validator::validate_max_length($field, $inputs[$field] ?? '', $value);
                 }
             }
         }
-    
+        if(!empty($this->errors)){
+            Sessions::set('errors' , $this->errors);
+        }
+    }
+
         private function validate_require($field, $value)
         {
             if (empty($value)) {
@@ -64,6 +69,7 @@ class Validate{
     
         public function hasErrors()
         {
+            
             return Sessions::has('errors');
         }
     
