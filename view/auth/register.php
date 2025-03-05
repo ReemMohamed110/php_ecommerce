@@ -1,48 +1,85 @@
-<?php $tittle="register"; ?>
+<?php $tittle = "register";
+include_once "../helper/Sessions.php";
+?>
 
-	<section class="account">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-10">
-					<div class="account-contents" style="background: url('assets/img/about/about1.jpg'); background-size: cover;">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="account-thumb">
-                                    <h2>Register now</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consectetur similique deleniti pariatur enim cumque eum</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <div class="account-content">
-                                    <form action="index.php?page=logic_register" method="POST">
-                                        <div class="single-acc-field">
-                                            <label for="name">Name</label>
-                                            <input type="text" name=name id="name" placeholder="Enter Your Name">
-                                        </div>
-                                        <div class="single-acc-field">
-                                            <label for="email">Email</label>
-                                            <input type="email" name="email" id="email" placeholder="Enter your Email">
-                                        </div>
-                                        <div class="single-acc-field">
-                                            <label for="password">Password</label>
-                                            <input type="password" name="password" id="password" placeholder="At least 8 Charecter">
-                                        </div>
-                                        <div class="single-acc-field boxes">
-                                            <input type="checkbox" name="not_robot" id="checkbox">
-                                            <label for="checkbox">I'm not a robot</label>
-                                        </div>
-                                        <div class="single-acc-field">
-                                            <button type="submit">Register now</button>
-                                        </div>
-                                        <a href="index.php?page=login">Already account? Login</a>
-                                    </form>
-                                </div>
+<section class="account">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="account-contents" style="background: url('assets/img/about/about1.jpg'); background-size: cover;">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="account-thumb">
+                                <h2>Register now</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consectetur similique deleniti pariatur enim cumque eum</p>
                             </div>
                         </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-   
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <div class="account-content">
+                                <form action="../admin.php?page=logic_register" method="POST">
+                                    <?php if (Sessions::has("success") == 'true') { ?>
+                                        <div class="alert alert-success alert-dismissible fade show">
+                                            <?php Sessions::flash("success");
+                                            Sessions::remove("success"); ?>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="single-acc-field">
+                                        <label for="name">Name</label>
+                                        <input type="text" name=name id="name" placeholder="Enter Your Name">
+                                        <?php if (Sessions::has("name") == 'true') { ?>
+                                            <div class="alert alert-danger alert-dismissible fade show">
+                                                <?php Sessions::flash("name");
+                                                Sessions::removeAll() ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="single-acc-field">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" placeholder="Enter your Email">
+                                        <?php if (Sessions::has("email") == 'true') { ?>
+                                            <div class="alert alert-danger alert-dismissible fade show">
+                                                <?php Sessions::flash("email");
+                                                Sessions::remove("email");
+                                                ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="single-acc-field">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password" placeholder="At least 8 Charecter">
+                                        <?php if (Sessions::has("password") == 'true') { ?>
+                                            <div class="alert alert-danger alert-dismissible fade show">
+                                                <?php Sessions::flash("password");
+                                                Sessions::remove("password");
+                                                ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="single-acc-field">
+                                        <label for="confirm_password">confirm Password</label>
+                                        <input type="confirm_password" name="confirm_password" id="confirmpassword" placeholder="At least 8 Charecter">
+                                        <?php if (Sessions::has("confirm_password") == 'true') { ?>
+                                            <div class="alert alert-danger alert-dismissible fade show">
+                                                <?php Sessions::flash("confirm_password");
+                                                Sessions::remove("confirm_password");
+                                                ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="single-acc-field boxes">
+                                        <input type="checkbox" name="not_robot" id="checkbox">
+                                        <label for="checkbox">I'm not a robot</label>
+                                    </div>
+                                    <div class="single-acc-field">
+                                        <button type="submit">Register now</button>
+                                    </div>
+                                    <a href="index.php?page=login">Already account? Login</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,6 +1,12 @@
 <?php
+namespace Validator;
+
+use Sessions;
+
 
 require_once 'Sessions.php';
+
+
 class Validator
 {
     private $errors = [];

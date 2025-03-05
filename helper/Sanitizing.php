@@ -1,4 +1,6 @@
 <?php
+
+// use Sessions\Sessions;
 require_once 'validator.php';
 class Sanitize{
 
