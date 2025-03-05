@@ -8,8 +8,6 @@ switch ($page) {
     case 'admin':
 
         include "public/indexAdmin.php";
-        // echo "ok";
-        // die;
         break;
     case 'logic_contact':
         include "controllers/auth/logic_contact.php";
@@ -20,6 +18,11 @@ switch ($page) {
     case 'logic_register':
         include "controllers/auth/logic_register.php";
         break;
+    case 'logic_login_check':
+
+        include "controllers/auth/logic_login.php";
+        break;
+
     default:
         include "../view/error/404.php";
         break;

@@ -17,7 +17,7 @@ include_once "../helper/Sessions.php";
                             <div class="account-content">
 
                                 <form action="../admin.php?page=logic_login" method="POST">
-                                    <?php if (Sessions::has("fail")) { ?>
+                                    <?php if (Sessions::has("fail") == "true") { ?>
                                         <div class="alert alert-danger alert-dismissible fade show">
                                             <?php Sessions::flash("fail"); ?>
                                         </div>
@@ -33,23 +33,21 @@ include_once "../helper/Sessions.php";
                                             </div>
                                         <?php } ?>
                                     </div> -->
-                                    
-                                            <div class="single-acc-field">
-                                                <label for="email">Email</label>
-                                                <input type="text" name="email" placeholder="Email" id="email">
-                                                <?php if (Sessions::has("email") == 'true') { ?>
-                                                    <div class="alert alert-danger alert-dismissible fade show">
-                                                        <?php Sessions::flash("email"); 
-                                                        ;
-                                                        ?>
-                                                    </div>
-                                                <?php } ?>
+
+                                    <div class="single-acc-field">
+                                        <label for="email">email</label>
+                                        <input type="text" name="email" placeholder="Enter your email">
+                                        <?php if (Sessions::has("email") == "true") { ?>
+                                            <div class="alert alert-danger alert-dismissible fade show">
+                                                <?php Sessions::flash("email");?>
                                             </div>
-                                        
+                                        <?php } ?>
+                                    </div>
+
                                     <div class="single-acc-field">
                                         <label for="password">Password</label>
-                                        <input type="password" id="password" placeholder="Enter your password">
-                                        <?php if (Sessions::has("password")) { ?>
+                                        <input type="password" name="password" placeholder="Enter your password">
+                                        <?php if (Sessions::has("password") == "true") { ?>
                                             <div class="alert alert-danger alert-dismissible fade show">
                                                 <?php Sessions::flash("password");
                                                 ?>

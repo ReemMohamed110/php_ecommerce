@@ -4,11 +4,15 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 include "../helper/Sessions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $phone = trim($_POST['phone']);
-    $password = trim($_POST['password']);
-    $confirm_password = trim($_POST['confirm_password']);
+    
+    $name = !empty($_POST['name']) ? htmlspecialchars(trim($_POST['name'])) : null;
+    $email = !empty($_POST['email']) ? htmlspecialchars(trim($_POST['email'])) : null;
+    $phone = !empty($_POST['phone']) ? htmlspecialchars(trim($_POST['phone'])) : null;
+    $password = !empty($_POST['password']) ? htmlspecialchars(trim($_POST['password'])) : null;
+    $confirm_password = !empty($_POST['confirm_password']) ? htmlspecialchars(trim($_POST['confirm_password'])) : null;
+    $gender = !empty($_POST['gender']) ? htmlspecialchars(trim($_POST['gender'])) : null;
+    $role = !empty($_POST['role']) ? htmlspecialchars(trim($_POST['role'])) : null;
+    
     //name validation
     if (empty($name)) {
         Sessions::set("name", "name is required");
@@ -63,16 +67,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             // header("location:" . $_SERVER['HTTP_REFERER']);
         }
     }
+    if (empty($gender)) {
+        Sessions::set("gender", "gender is required");
+    }
+    if (empty($role)) {
+        Sessions::set("role", "role is required");
+    }
     // if(!isset($_SESSION['name'])&&!isset($_SESSION['email'])&&!isset($_SESSION['phone'])&&!isset($_SESSION['password'])&&!isset($_SESSION['confirm_password'])){
 
     // }
-    if (!Sessions::has('email') == "true" || !Sessions::has('password')=="true") {
+    if (!Sessions::has('email') == "true" && !Sessions::has('password')=="true" && !Sessions::has('name')=="true"&& !Sessions::has('confirm_password')=="true" && !Sessions::has('gender')=="true" && !Sessions::has('role')=="true" ) {
         
-        header("location:" . $_SERVER['HTTP_REFERER']);
-        // header("location:public/index.php?page=home");
+        // header("location:" . $_SERVER['HTTP_REFERER']);
+        header("location:public/index.php?page=home");
         
-    } elseif(Sessions::has('email') !== "true" && Sessions::has('password')!=="true"){
-        Sessions::set("success", "message sent successfully");
+    } else{
+        Sessions::set("fail", "failed to register");
         header("location:" . $_SERVER['HTTP_REFERER']);
         // header("location:public/index.php?page=home");
         // header("location:" . $_SERVER['HTTP_REFERER']);
