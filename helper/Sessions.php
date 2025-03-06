@@ -105,9 +105,6 @@ class Sessions
     public static function has($key)
     {
 
-
-        return isset($_SESSION[$key]);
-
         if (isset($_SESSION[$key])) {
             return 'true';
         } else {

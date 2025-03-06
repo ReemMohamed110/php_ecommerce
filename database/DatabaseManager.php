@@ -11,7 +11,7 @@ class DatabaseManager
     private static function loadConfig()
     {
         if (!isset(self::$config)) {
-            self::$config = require "../config/database.php";
+            self::$config = require __DIR__."/../config/database.php";
         }
     }
     private static function connect($dbconn = null)

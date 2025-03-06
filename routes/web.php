@@ -52,6 +52,9 @@ switch ($page) {
     case 'my-account':
         include "../view/auth/my-account.php";
         break;
+    // case 'logout':
+    //     include "../controllers/auth/logout.php";
+    //     break;
     // case 'logic_contact':
     //     include "../controllers/auth/logic_contact.php";
     //     break;
@@ -61,10 +64,8 @@ switch ($page) {
     case 'admin':
         include "../admin.php";
         break;
-    
+
     default:
-    include "../view/error/404.php";
-    break;
+        include "../view/error/404.php";
+        break;
 }
-
-
