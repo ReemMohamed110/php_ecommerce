@@ -14,6 +14,10 @@ class CreateOrderDetailsTable
    CONSTRAINT `product_order_details_fk` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
 )";
 
-        $conn->exec($sql);
-    }
+if ($conn->query($sql) === TRUE) {
+    echo "Table order details created successfully.<br>";
+} else {
+    echo "Error creating table order details: " . $conn->error . "<br>";
+}
+}
 }

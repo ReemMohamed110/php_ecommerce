@@ -1,9 +1,8 @@
 <?php 
 interface userInterface {
     function create($name, $email, $phone, $password, $gender, $role);
-    function login($email,$password);
-    function forgetPassword();
-
+    function login($email, $password);
+    function forgetPassword($email); 
 }
 interface productInterface {
     function create();

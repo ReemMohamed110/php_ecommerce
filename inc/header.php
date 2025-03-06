@@ -156,24 +156,29 @@
                                     <li><a href="index.php?page=checkout">Checkout</a></li>
                                     <?php
 
-                                    $q = "SELECT * FROM users WHERE email =:email and role= 'admin'";
-                                    $sql = new PDO("mysql:host=localhost;dbname=newEcommerce", "root", "");
-                                    $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    $conn = new mysqli("localhost", "root", "", "newEcommerce");
+
+                                    
+                                    if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
 
                                     if (isset($_SESSION['user_email'])) {
-                                        $conn = $sql->prepare($q);
-                                        $conn->execute(['email' => $_SESSION['user_email']]);
-                                        $user = $conn->fetch(PDO::FETCH_ASSOC);
+                                        $query = "SELECT * FROM users WHERE email = ? AND role = 'admin'";
+                                        $stmt = $conn->prepare($query);
+                                        $stmt->bind_param("s", $_SESSION['user_email']);
+                                        $stmt->execute();
+                                        $result = $stmt->get_result();
+                                        $user = $result->fetch_assoc();
+                                        $stmt->close();
 
-                                        if ($user) { ?>
-                                            <li><a href="indexAdmin.php?page=admin">dashboard</a></li>
-                                    <?php }
-                                    }
-                                    // }
-                                    ?>
+                                        if ($user){ ?>
+                                           <li><a href="indexAdmin.php?page=admin">Dashboard</a></li>;
+                                       <?php } ?>
+                                  
                                     <?php if (isset($_SESSION['user_email'])) { ?>
                                         <li><?php echo $_SESSION['user_email'] ?></li>
-                                    <?php } ?>
+                                    <?php } }?>
                                 </ul>
                             </div>
                         </div>
@@ -317,11 +322,10 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="index-2.php">home</a></li>
-                            <li><?php echo "..." ?></li>
+                            <li><?php echo $page; ?></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--breadcrumbs area end-->

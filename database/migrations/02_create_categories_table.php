@@ -13,7 +13,10 @@ class CreateCategoriesTable
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 )";
-
-        $conn->exec($sql);
+        if ($conn->query($sql) === TRUE) {
+            echo "Table category created successfully.<br>";
+        } else {
+            echo "Error creating table category: " . $conn->error . "<br>";
+        }
     }
 }
