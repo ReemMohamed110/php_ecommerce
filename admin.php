@@ -20,6 +20,9 @@ switch ($page) {
     case 'logic_register':
         include "controllers/auth/logic_register.php";
         break;
+    case 'logic_forget_pass':
+        include "controllers/auth/logic_forget_pass.php";
+        break;
     default:
         include "../view/error/404.php";
         break;

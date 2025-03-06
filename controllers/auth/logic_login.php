@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     
-    if (empty($email)) {
+    if (empty($email)){
         Sessions::set("email", "email is required to login");
     } else {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

@@ -13,15 +13,15 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                 <div class="account-content">
-                                    <form action="#">
+                                    <form action="admin.php?page=logic_forget_pass">
                                         <div class="single-acc-field">
                                             <label for="email">Email</label>
-                                            <input type="email" id="email" placeholder="Enter your Email">
+                                            <input type="text" name="email" id="email" placeholder="Enter your Email">
                                         </div>
                                         <div class="single-acc-field">
                                             <button type="submit">Reset Password</button>
                                         </div>
-                                        <a href="login.html">Login now</a>
+                                        <a href="index.php?page=login">Login now</a>
                                     </form>
                                 </div>
                             </div>

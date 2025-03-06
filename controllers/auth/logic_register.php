@@ -1,7 +1,7 @@
 <?php
 
 if (session_status() == PHP_SESSION_NONE) session_start();
-include "../helper/Sessions.php";
+include "helper/Sessions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = trim($_POST['name']);
@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $phone = trim($_POST['phone']);
     $password = trim($_POST['password']);
     $confirm_password = trim($_POST['confirm_password']);
+    Sessions::set('email' , $email); //to use this in forget password
     //name validation
     if (empty($name)) {
         Sessions::set("name", "name is required");
