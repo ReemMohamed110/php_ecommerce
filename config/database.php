@@ -1,7 +1,7 @@
 <?php
 return [
     'host'=>'localhost',
-    'dbname'=>'Ecommercenew',
+    'dbname'=>'newEcommerce',
     'username'=>'root',
     'password'=>''
 ];

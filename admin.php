@@ -22,6 +22,9 @@ switch ($page) {
 
         include "controllers/auth/logic_login.php";
         break;
+        case 'logout':
+            include "controllers/auth/logout.php";
+            break;
 
     default:
         include "../view/error/404.php";

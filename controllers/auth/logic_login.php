@@ -1,12 +1,15 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) session_start();
+include "app/user_class.php";
+$userObj=new User;
+
 include "../helper/Sessions.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $email = !empty($_POST['email']) ? htmlspecialchars(trim($_POST['email'])) : null;
     $password = !empty($_POST['password']) ? htmlspecialchars(trim($_POST['password'])) : null;
-    // var_dump($_POST['email'],$_POST['password']);
+    
 
     //email validation
     if ($email == null) {
@@ -22,29 +25,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //password validation
     if (empty($password)) {
         Sessions::set("password", "password is required");
-        // $_SESSION['password'] = "password is required";
-        // header("location:" . $_SERVER['HTTP_REFERER']);
+        
     } else {
         if (strlen($password) < 2 || strlen($password) > 20) {
             Sessions::set("password", "invalid password");
-            // $_SESSION['password'] = "invalid password";
-            // header("location:" . $_SERVER['HTTP_REFERER']);
+            
         }
     }
 
 
-    // if(!isset($_SESSION['name'])&&!isset($_SESSION['email'])&&!isset($_SESSION['phone'])&&!isset($_SESSION['password'])&&!isset($_SESSION['confirm_password'])){
 
-    // }
-    if (!Sessions::has('email') == "true" && !Sessions::has('password') == "true") {
-
-        // header("location:" . $_SERVER['HTTP_REFERER']);
+    if (!Sessions::has('email') == "true" && !Sessions::has('password') == "true" && $userObj->login($email,$password)) {
+        
         header("location:public/index.php?page=home");
+        exit;
     } else {
         Sessions::set("fail", "failed to register");
         header("location:" . $_SERVER['HTTP_REFERER']);
-        // header("location:public/index.php?page=home");
-        // header("location:" . $_SERVER['HTTP_REFERER']);
+        
+        exit;
 
     }
 }

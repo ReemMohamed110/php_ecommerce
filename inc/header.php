@@ -119,45 +119,7 @@
                                 <!--mini cart end-->
                             </div>
                         </div>
-                        <!-- <div id="menu" class="text-left ">
-                            <ul class="offcanvas_main_menu">
-                                <li class="menu-item-has-children active">
-                                    <a href="index.php">Home</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="product-details.php">product</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">pages </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="about.php">About Us</a></li>
-                                        <li><a href="contact.php">contact</a></li>
-                                        <li><a href="privacy-policy.php">privacy policy</a></li>
-                                        <li><a href="faq.php">Frequently Questions</a></li>
-                                        <li><a href="login.php">login</a></li>
-                                        <li><a href="register.php">register</a></li>
-                                        <li><a href="forget-password.php">Forget Password</a></li>
-                                        <li><a href="404.php">Error 404</a></li>
-                                        <li><a href="cart.php">cart</a></li>
-                                        <li><a href="tracking.php">tracking</a></li>
-                                        <li><a href="checkout.php">checkout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">blog</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog.php">blog</a></li>
-                                        <li><a href="blog-details.php">blog details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="login.php">my account</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="contact.php"> Contact Us</a>
-                                </li>
-                            </ul>
-                        </div> -->
+
 
                         <div class="Offcanvas_footer">
                             <span><a href="#"><i class="fa fa-envelope-o"></i> info@drophunt.com</a></span>
@@ -192,7 +154,26 @@
                                 <ul>
                                     <li><a href="index.php?page=my-account">Account</a></li>
                                     <li><a href="index.php?page=checkout">Checkout</a></li>
-                                    <li><a href="indexAdmin.php?page=admin">dashboard</a></li>
+                                    <?php
+
+                                    $q = "SELECT * FROM users WHERE email =:email and role= 'admin'";
+                                    $sql = new PDO("mysql:host=localhost;dbname=newEcommerce", "root", "");
+                                    $sql->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                                    if (isset($_SESSION['user_email'])) {
+                                        $conn = $sql->prepare($q);
+                                        $conn->execute(['email' => $_SESSION['user_email']]);
+                                        $user = $conn->fetch(PDO::FETCH_ASSOC);
+
+                                        if ($user) { ?>
+                                            <li><a href="indexAdmin.php?page=admin">dashboard</a></li>
+                                    <?php }
+                                    }
+                                    // }
+                                    ?>
+                                    <?php if (isset($_SESSION['user_email'])) { ?>
+                                        <li><?php echo $_SESSION['user_email'] ?></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -302,6 +283,7 @@
                                                 <li><a href="index.php?page=faq">Frequently Questions</a></li>
                                                 <li><a href="index.php?page=login">login</a></li>
                                                 <li><a href="index.php?page=register">register</a></li>
+                                                <li><a href="../admin.php?page=logout">log out</a></li>
                                                 <li><a href="index.php?page=forget-password">Forget Password</a></li>
                                                 <li><a href="index.php?page=404">Error 404</a></li>
                                                 <li><a href="index.php?page=cart">cart</a></li>
@@ -329,7 +311,7 @@
     <!--header area end-->
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
-        <div class="container">   
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
@@ -340,6 +322,6 @@
                     </div>
                 </div>
             </div>
-        </div>         
+        </div>
     </div>
     <!--breadcrumbs area end-->
