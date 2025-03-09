@@ -1,4 +1,6 @@
 <?php
+// echo "ok";
+// die;
 // namespace Sessions;
 // class Sessions
 // {
