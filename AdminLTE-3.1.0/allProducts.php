@@ -47,7 +47,7 @@ $showProduct = new Product();
 
                     </td>
                 </tr>
-                <
+                
                     <?php }
 
                     ?>

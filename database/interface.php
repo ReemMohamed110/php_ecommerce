@@ -23,3 +23,9 @@ interface brandInterface {
     // function update();
     // function delete();
 }
+interface categoryInterface {
+    function addCategory($name_en, $name_ar,$image, $status);
+    function showCategory();
+    // function update();
+    // function delete();
+}

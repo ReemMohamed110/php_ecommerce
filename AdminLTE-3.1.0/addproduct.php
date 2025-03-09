@@ -3,7 +3,15 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 include_once "../helper/Sessions.php";
 include_once "inc/header.php";
 include_once "inc/nav.php";
+// include_once "inc/header.php";
+// include_once __DIR__ . "/inc/nav.php";
+include_once "../app/brand_class.php";
+include_once "../app/category_class.php";
+$showBrands = new Brand();
+
+$showCategory = new Category();
 ?>
+
 
 
 <!-- Main content -->
@@ -12,9 +20,9 @@ include_once "inc/nav.php";
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-12">
-        
+
       </div>
-      
+
       <div class="col-12">
         <form action="../controllers/cart/logic_product.php" method="POST" enctype="multipart/form-data">
           <?php if (Sessions::has("fail") == "true") { ?>
@@ -90,7 +98,7 @@ include_once "inc/nav.php";
               <select name="status" id="Status" class="form-control">
                 <option value="1">Active</option>
                 <option value="0">Not Active</option>
-                
+
               </select>
               <?php if (Sessions::has("status") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
@@ -100,9 +108,17 @@ include_once "inc/nav.php";
               <?php } ?>
             </div>
             <div class="col-4">
-              <label for="Code">Brands</label>
-              <input name="brand_id" id="Code" class="form-control">
-              
+              <label for="brand_id">Brands</label>
+              <select name="brand_id" id="brand_id" class="form-control">
+                <?php
+
+                $res = $showBrands->showBrands();
+                foreach ($res as  $value) { ?>
+                  <option value="<?= $value['id'] ?>"><?= $value['name_en'] ?></option>
+                <?php }
+
+                ?>
+              </select>
               <?php if (Sessions::has("brand_id") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
                   <?php Sessions::flash("brand_id");
@@ -112,8 +128,17 @@ include_once "inc/nav.php";
             </div>
             <div class="col-4">
               <label for="category_id">categories</label>
-              <input name="category_id" id="Code" class="form-control">
-              
+              <select name="category_id" id="category_id" class="form-control">
+                <?php
+
+                $res = $showCategory->showCategory();
+                foreach ($res as  $value) { ?>
+                  <option value="<?= $value['id'] ?>"><?= $value['name_en'] ?></option>
+                <?php }
+
+                ?>
+              </select>
+
               <?php if (Sessions::has("category_id") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
                   <?php Sessions::flash("category_id");

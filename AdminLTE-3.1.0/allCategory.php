@@ -3,12 +3,12 @@
 if (session_status() == PHP_SESSION_NONE) session_start();
 include_once "inc/header.php";
 include_once __DIR__ . "/inc/nav.php";
-include_once "../app/brand_class.php";
-$showBrands = new Brand();
+include_once "../app/category_class.php";
+$showCategory = new Category();
 ?>
 <div class="card">
     <div class="card-header border-0">
-        <h3 class="card-title">Brands</h3>
+        <h3 class="card-title">categories</h3>
         <div class="card-tools">
             <a href="#" class="btn btn-tool btn-sm">
                 <i class="fas fa-download"></i>
@@ -30,7 +30,7 @@ $showBrands = new Brand();
            
             <?php
 
-            $res = $showBrands->showBrands();
+            $res = $showCategory->showCategory();
             foreach ($res as  $value) { ?>
                 <tr>
                     <td><?= $value['name_en'] ?></td>
