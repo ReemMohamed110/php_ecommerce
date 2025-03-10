@@ -17,10 +17,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="blog-details.php"><img src="assets/img/blog/blog1.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">bibendum massa nec, fermentum odio</a></h3>
+                                            <h3><a href="blog-details.php">bibendum massa nec, fermentum odio</a></h3>
                                             <div class="blog_meta">                                        
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2019</a></span>
@@ -29,7 +29,7 @@
                                                 <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="blog-details.php">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -39,10 +39,10 @@
                                 <article class="single_blog mb-60">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog2.jpg" alt=""></a>
+                                            <a href="blog-details.php"><img src="assets/img/blog/blog2.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Aenean posuere libero eu augue</a></h3>
+                                            <h3><a href="blog-details.php">Aenean posuere libero eu augue</a></h3>
                                             <div class="blog_meta">                                        
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2019</a></span>
@@ -51,7 +51,7 @@
                                                 <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="blog-details.php">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -61,10 +61,10 @@
                                 <article class="single_blog">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog2.jpg" alt=""></a>
+                                            <a href="blog-details.php"><img src="assets/img/blog/blog2.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Donec vitae hendrerit arcu, sit amet</a></h3>
+                                            <h3><a href="blog-details.php">Donec vitae hendrerit arcu, sit amet</a></h3>
                                             <div class="blog_meta">                                        
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2019</a></span>
@@ -73,7 +73,7 @@
                                                 <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Cras et vehicula orci. Curabitur aliquet ullamcorper suscipit. Aliquam erat volutpat. Cras convallis libero mi, sit amet scelerisque elit suscipit id. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="blog-details.php">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -83,10 +83,10 @@
                                 <article class="single_blog">
                                     <figure>
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="blog-details.php"><img src="assets/img/blog/blog1.jpg" alt=""></a>
                                         </div>
                                         <figcaption class="blog_content">
-                                            <h3><a href="blog-details.html">Cras pretium arcu ex. Aenean</a></h3>
+                                            <h3><a href="blog-details.php">Cras pretium arcu ex. Aenean</a></h3>
                                             <div class="blog_meta">                                        
                                                 <span class="author">Posted by : <a href="#">admin</a> / </span>
                                                 <span class="post_date">On : <a href="#">April 10, 2019</a></span>
@@ -95,7 +95,7 @@
                                                 <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit. Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Cras et vehicula orci. Curabitur aliquet ullamcorper suscipit. Aliquam erat volutpat. Cras convallis libero mi, sit amet scelerisque elit suscipit id. </p>
                                             </div>
                                             <footer class="readmore_button">
-                                                <a href="blog-details.html">read more</a>
+                                                <a href="blog-details.php">read more</a>
                                             </footer>
                                         </figcaption>
                                     </figure>
@@ -117,28 +117,28 @@
                             <h3>Recent Posts</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                    <a href="blog-details.php"><img src="assets/img/blog/blog1.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Blog image post</a></h3>
+                                    <h3><a href="blog-details.php">Blog image post</a></h3>
                                     <span>March 16, 2018 </span>
                                 </div>
                             </div>
                              <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog2.jpg" alt=""></a>
+                                    <a href="blog-details.php"><img src="assets/img/blog/blog2.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Gallery</a></h3>
+                                    <h3><a href="blog-details.php">Post with Gallery</a></h3>
                                     <span>March 16, 2018 </span>
                                 </div>
                             </div>
                              <div class="post_wrapper">
                                 <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                    <a href="blog-details.php"><img src="assets/img/blog/blog1.jpg" alt=""></a>
                                 </div>
                                 <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Audio</a></h3>
+                                    <h3><a href="blog-details.php">Post with Audio</a></h3>
                                     <span>March 16, 2018 </span>
                                 </div>
                             </div>

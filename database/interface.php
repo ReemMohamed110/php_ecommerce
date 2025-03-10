@@ -16,3 +16,10 @@ interface cartInterface {
     function update();
     function delete();
 }
+interface BlogInterface {
+    public function create(array $data, $file);
+    public function read(int $id);
+    public function update(int $id, array $data, $file = null);
+    public function delete(int $id);
+    public function getAll();
+}
