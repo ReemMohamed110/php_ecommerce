@@ -57,8 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         
     } else {
         if($img!=null){
-        $image = "../../public/assets/img/product/".$img;
+        $image = "../public/assets/img/product/".$img;
         move_uploaded_file($_FILES['image']["tmp_name"],$image);}
+        if(isset($_GET['id'])){
+            Sessions::set("success", "brand updated successfully");
+        
+        $brandObj->editBrand($_GET['id'],$name_en, $name_ar,$image, $status);
+        
+        header("location:../../AdminLTE-3.1.0/allBrands.php" );
+        
+        exit;
+        }
         Sessions::set("success", "brand added successfully");
         
         $brandObj->addBrand($name_en, $name_ar,$image, $status);

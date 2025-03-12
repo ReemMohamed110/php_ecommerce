@@ -59,6 +59,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if($img!=null){
         $image = "../../public/assets/img/category/".$img;
         move_uploaded_file($_FILES['image']["tmp_name"],$image);}
+        if(isset($_GET['id'])){
+        Sessions::set("success", "category updated successfully");
+        
+        $categoryObj->editCategory($_GET['id'],$name_en, $name_ar,$image, $status);
+        
+        header("location:../../AdminLTE-3.1.0/allCategory.php" );
+        
+        exit;
+        }
         Sessions::set("success", "category added successfully");
         
         $categoryObj->addCategory($name_en, $name_ar,$image, $status);

@@ -42,13 +42,30 @@ class Brand implements brandInterface
         $brands = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $brands;
     }
-    public function update()
+    
+    public function editBrand($id,$name_en, $name_ar,$image, $status)
     {
-        # code...
+        $q = "UPDATE brands SET name_en=:name_en,name_ar=:name_ar,image=:image,status=:status WHERE id=:id";
+        $sql = $this->db->prepare($q);
+        $sql->execute(
+            ['name_en' => $name_en,
+                'name_ar' => $name_ar,
+                'image' => $image,
+                'status' => $status,
+                'id'=>$id
+            ]);
     }
-    public function delete()
+    public function showEditBrand($id){
+        $q = "SELECT * FROM Brands where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
+        $brand = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $brand;
+    }
+    public function deleteBrand($id)
     {
-        # code...
+        $q = "DELETE FROM brands where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
     }
-
 }

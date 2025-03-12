@@ -164,7 +164,7 @@ class Product implements productInterface
     {
         return $this->created_at;
     }
-   
+
     public function getUpdated_at()
     {
         return $this->updated_at;
@@ -176,7 +176,8 @@ class Product implements productInterface
         VALUES (:name_en,:name_ar,:price,:quantity,:desc_en,:desc_ar,:image, :code,:status,:brand_id,:category_id)";
         $sql = $this->db->prepare($q);
         $sql->execute(
-            ['name_en' => $name_en,
+            [
+                'name_en' => $name_en,
                 'name_ar' => $name_ar,
                 'price' => $price,
                 'quantity' => $quantity,
@@ -186,30 +187,56 @@ class Product implements productInterface
                 'code' => $code,
                 'status' => $status,
                 'brand_id' => $brand_id,
-                'category_id' => $category_id 
-            ]);
-        
+                'category_id' => $category_id
+            ]
+        );
     }
     public function showProducts()
-    {$q = "SELECT * FROM products";
+    {
+        $q = "SELECT * FROM products";
         $sql = $this->db->prepare($q);
         $sql->execute();
         $products = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $products;
+    }
+    public function showEditProduct($id)
+    {
+        $q = "SELECT * FROM products where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
+        $products = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $products;
+    }
+    public function editProduct($id, $name_en, $name_ar, $price, $quantity, $desc_en, $desc_ar, $image, $code, $status, $brand_id, $category_id)
+    {$q = "UPDATE products SET name_en = :name_en,name_ar = :name_ar,desc_en = :desc_ar, desc_ar = :desc_ar, price = :price, quantity = :quantity, image = :image, code = :code, status = :status, brand_id = :brand_id, category_id = :category_id WHERE id = :id";
+    
+        $sql = $this->db->prepare($q);
+        $sql->execute([
+            ':name_en' => $name_en,
+            ':name_ar' => $name_ar,
+            ':desc_en' => $desc_en,
+            ':desc_ar' => $desc_ar,
+            ':price' => $price,
+            ':quantity' => $quantity,
+            ':image' => $image,
+            ':code' => $code,
+            ':status' => $status,
+            ':brand_id' => $brand_id,
+            ':category_id' => $category_id,
+            ':id' => $id
+        ]);
+    }
+    public function deleteProduct($id)
+    {
+        $q = "DELETE FROM products where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
         
     }
-    public function update()
-    {
-        # code...
-    }
-    public function delete()
-    {
-        # code...
-    }
 
-  
 
-   
+
+
 
     public function getReviews()
     {
@@ -222,6 +249,6 @@ class Product implements productInterface
         //         ON `users`.`id` = `reviews`.`user_id`
         //         WHERE
         //             `reviews`.`product_id` = $this->id";
-                
+
     }
 }

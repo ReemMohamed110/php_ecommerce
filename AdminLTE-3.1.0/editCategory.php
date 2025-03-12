@@ -3,6 +3,13 @@ if (session_status() == PHP_SESSION_NONE) session_start();
 include_once "../helper/Sessions.php";
 include_once "inc/header.php";
 include_once "inc/nav.php";
+include_once "../app/category_class.php";
+$categoryObject=new Category;
+$res= $categoryObject->showEditCategory($_GET['id']);
+foreach($res as $edit){
+
+}
+
 ?>
 
 
@@ -16,7 +23,7 @@ include_once "inc/nav.php";
       </div>
       
       <div class="col-12">
-        <form action="../controllers/cart/logic_category.php" method="POST" enctype="multipart/form-data">
+        <form action="../controllers/cart/logic_category.php?id=<?=$_GET['id'] ?>" method="POST" enctype="multipart/form-data">
           
           <?php if (Sessions::has("fail") == "true") { ?>
             <div class="alert alert-danger alert-dismissible fade show">
@@ -32,7 +39,7 @@ include_once "inc/nav.php";
             <div class="col-6">
               <label for="name_en">Name En</label>
               <input type="text" name="name_en" id="name_en" class="form-control" placeholder=""
-                aria-describedby="helpId">
+                aria-describedby="helpId" value="<?=$edit['name_en']?>">
               <?php if (Sessions::has("name_en") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
                   <?php Sessions::flash("name_en");
@@ -43,7 +50,7 @@ include_once "inc/nav.php";
             <div class="col-6">
               <label for="name_ar">Name Ar</label>
               <input type="text" name="name_ar" id="name_ar" class="form-control" placeholder=""
-                aria-describedby="helpId">
+                aria-describedby="helpId" value="<?=$edit['name_ar']?>">
               <?php if (Sessions::has("name_ar") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
                   <?php Sessions::flash("name_ar");
@@ -55,7 +62,7 @@ include_once "inc/nav.php";
           <div class="form-row">
             <div class="col-4">
               <label for="Status">Status</label>
-              <select name="status" id="Status" class="form-control">
+              <select name="status" id="Status" class="form-control" value="<?=$edit['status']?>">
                 <option value="1">Active</option>
                 <option value="0">Not Active</option>
                
@@ -70,7 +77,7 @@ include_once "inc/nav.php";
           <div class="form-row">
             <div class="col-12">
               <label for="image">Image</label>
-              <input type="file" name="image" id="image" class="form-control">
+              <input type="file" name="image" id="image" class="form-control" value="<?=$edit['image']?>">
               <?php if (Sessions::has("image") == "true") { ?>
                 <div class="alert alert-danger alert-dismissible fade show">
                   <?php Sessions::flash("image");
@@ -82,7 +89,7 @@ include_once "inc/nav.php";
           </div>
           <div class="form-row my-3">
             <div class="col-2">
-              <button class="btn btn-primary" name="page" value="index"> add category </button>
+              <button class="btn btn-primary" name="page" value="index"> edit category </button>
             </div>
           </div>
         </form>

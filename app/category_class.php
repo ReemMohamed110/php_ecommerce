@@ -42,13 +42,31 @@ class Category implements categoryInterface
         $category = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $category;
     }
-    public function update()
-    {
-        # code...
+    function showEditCategory($id){
+        $q = "SELECT * FROM categories where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
+        $category = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $category;
     }
-    public function delete()
-    {
-        # code...
+    function editCategory($id,$name_en, $name_ar,$image, $status){
+        $q = "UPDATE categories SET name_en=:name_en,name_ar=:name_ar,image=:image,status=:status WHERE id=:id";
+        $sql = $this->db->prepare($q);
+        $sql->execute(
+            ['name_en' => $name_en,
+                'name_ar' => $name_ar,
+                'image' => $image,
+                'status' => $status,
+                'id'=>$id
+            ]);
     }
+    
+    public function deleteCategory($id)
+    {
+        $q = "DELETE FROM categories where id=$id";
+        $sql = $this->db->prepare($q);
+        $sql->execute();
+    }
+    
 
 }

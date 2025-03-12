@@ -42,8 +42,8 @@ $showProduct = new Product();
                     <td><?= $value['quantity'] ?></td>
                     <td><img width="100" height="100" src='<?=$value['image'] ?>'></td>
                     <td>
-                        <a href="controller/blog/delete.php?id=<?php echo $value['id'] ?>&tittle=<?php echo $row['tittle'] ?>&content=<?php echo $row['content'] ?>" class="btn btn-danger" style="font-size: 18px; padding: 10px 20px;"><i class="fas fa-trash"></i></i> </a>
-                        <a href="index.php?page=edit&id=<?php echo $value['id'] ?>" class="btn btn-info" style="font-size: 18px; padding: 10px 20px;"><i class="fas fa-edit"></i> </a>
+                        <a href="../controllers/cart/logic_delete.php?id=<?php echo $value['id'] ?>&tittle=product" class="btn btn-danger" style="font-size: 18px; padding: 10px 20px;"><i class="fas fa-trash"></i></i> </a>
+                        <a href="editProduct.php?id=<?php echo $value['id'] ?>" class="btn btn-info" style="font-size: 18px; padding: 10px 20px;"><i class="fas fa-edit"></i> </a>
 
                     </td>
                 </tr>

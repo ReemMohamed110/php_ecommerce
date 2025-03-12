@@ -93,6 +93,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         
     } else {
         move_uploaded_file($_FILES['image']["tmp_name"],$image);
+        if(isset($_GET['id'])){
+            Sessions::set("success", "product edited successfully");
+        
+        $productObj->editProduct($_GET['id'],$name_en, $name_ar, $price, $quantity, $desc_en, $desc_ar, $image, $code, $status, $brand_id, $category_id);
+        
+        header("location:../../AdminLTE-3.1.0/allProducts.php");
+        
+        exit;
+        }
         Sessions::set("success", "product added successfully");
         
         $productObj->addProduct($name_en, $name_ar, $price, $quantity, $desc_en, $desc_ar, $image, $code, $status, $brand_id, $category_id);
