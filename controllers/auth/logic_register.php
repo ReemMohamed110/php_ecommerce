@@ -1,6 +1,6 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) session_start();
-include "../helper/Sessions.php";
+include "helper/Sessions.php";
 
 include "app/user_class.php";
 $userObj = new User;
@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $confirm_password = !empty($_POST['confirm_password']) ? htmlspecialchars(trim($_POST['confirm_password'])) : null;
     $gender = !empty($_POST['gender']) ? htmlspecialchars(trim($_POST['gender'])) : null;
     $role = !empty($_POST['role']) ? htmlspecialchars(trim($_POST['role'])) : null;
+
 
     //name validation
     if (empty($name)) {

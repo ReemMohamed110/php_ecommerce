@@ -10,7 +10,10 @@ class CreateShippingProductTable
   CONSTRAINT `product_fk` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
    CONSTRAINT `shipp_fk` FOREIGN KEY (`shipping_id`) REFERENCES `shipping` (`id`)
 )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table shipping order created successfully.<br>";
+} else {
+    echo "Error creating table shipping order: " . $conn->error . "<br>";
+}
+}
 }

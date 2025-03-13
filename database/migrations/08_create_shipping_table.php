@@ -13,6 +13,10 @@ class CreateShippingTable
   CONSTRAINT `user_shipping_fk` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
 )";
 
-        $conn->exec($sql);
-    }
+if ($conn->query($sql) === TRUE) {
+    echo "Table shipping created successfully.<br>";
+} else {
+    echo "Error creating table shipping: " . $conn->error . "<br>";
+}
+}
 }

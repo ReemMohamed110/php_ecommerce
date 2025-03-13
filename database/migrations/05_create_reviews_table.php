@@ -14,7 +14,9 @@ class CreateReviewsTable
    CONSTRAINT `products_reviews_fk` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
    CONSTRAINT `users_review_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table reviews created successfully.<br>";
+} else {
+    echo "Error creating table reviews: " . $conn->error . "<br>";
 }
+}}

@@ -23,7 +23,10 @@ class CreateProductsTable
    CONSTRAINT `categories_products_fk` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 
 )";
-
-        $conn->exec($sql);
+        if ($conn->query($sql) === TRUE) {
+            echo "Table product created successfully.<br>";
+        } else {
+            echo "Error creating table product: " . $conn->error . "<br>";
+        }
     }
 }

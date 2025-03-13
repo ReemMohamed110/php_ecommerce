@@ -20,7 +20,10 @@ class CreateOrdersTable
    CONSTRAINT `order_user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 
 )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table orders created successfully.<br>";
+} else {
+    echo "Error creating table orders: " . $conn->error . "<br>";
+}
+}
 }

@@ -14,7 +14,10 @@ class CreateCommentsTable
    CONSTRAINT `post_comment_fk` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
    CONSTRAINT `user_coment_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table comment created successfully.<br>";
+} else {
+    echo "Error creating table comment: " . $conn->error . "<br>";
+}
+}
 }

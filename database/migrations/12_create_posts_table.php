@@ -14,7 +14,10 @@ class CreatePostsTable
   CONSTRAINT `post_user_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 
 )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table posts created successfully.<br>";
+} else {
+    echo "Error creating table posts: " . $conn->error . "<br>";
+}
+}
 }

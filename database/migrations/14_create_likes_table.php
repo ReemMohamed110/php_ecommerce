@@ -11,7 +11,10 @@ class CreateLikesTable
    CONSTRAINT `comment_like_fk` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`),
    CONSTRAINT `post_like_fk` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`)
     )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table likes created successfully.<br>";
+} else {
+    echo "Error creating table likes: " . $conn->error . "<br>";
+}
+}
 }

@@ -11,10 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = !empty($_POST['password']) ? htmlspecialchars(trim($_POST['password'])) : null;
     
 
+
     //email validation
     if ($email == null) {
         Sessions::set("email", "email is required");
         
+
     } else {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             Sessions::set("email", "invalid email format");

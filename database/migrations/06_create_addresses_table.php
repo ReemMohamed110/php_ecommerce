@@ -16,6 +16,10 @@ class CreateAddressesTable{
             CONSTRAINT `user_adress_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
         )";
 
-        $conn->exec($sql);
-    }
+if ($conn->query($sql) === TRUE) {
+    echo "Table adresses created successfully.<br>";
+} else {
+    echo "Error creating table adresses: " . $conn->error . "<br>";
+}
+}
 }

@@ -12,7 +12,10 @@ class CreateCartsTable
           CONSTRAINT `cart_product_fk` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
           CONSTRAINT `user_cart_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
             )";
-
-        $conn->exec($sql);
-    }
+ if ($conn->query($sql) === TRUE) {
+    echo "Table carts created successfully.<br>";
+} else {
+    echo "Error creating table carts: " . $conn->error . "<br>";
+}
+}
 }
